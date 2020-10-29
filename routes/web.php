@@ -22,5 +22,6 @@ Route::resource('blogs','BlogController');
 Route::resource('jeny','jenyController');
 Route::resource('theme','themeController');
 Route::resource('test','TestModelController');
+Route::resource('picturestore','PictureStoreController');
 
 //Route::resource('customer','CustomerController');
