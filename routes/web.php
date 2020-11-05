@@ -23,5 +23,6 @@ Route::resource('jeny','jenyController');
 Route::resource('theme','themeController');
 Route::resource('test','TestModelController');
 Route::resource('picturestore','PictureStoreController');
+Route::resource('notify','NotifyController');
 
 //Route::resource('customer','CustomerController');

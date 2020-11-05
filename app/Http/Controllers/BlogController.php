@@ -44,12 +44,13 @@ class BlogController extends Controller
             'title' => 'required',
             'description' => 'required|unique:blogs,description',
 
-        ],
-        [
-            'title.required' => 'Title is required',
-            'description.required' => 'Description is required',
-            'description.unique' => 'Description must be unique'
         ]
+        // ,
+        // [
+        //     'title.required' => 'Title is required',
+        //     'description.required' => 'Description is required',
+        //     'description.unique' => 'Description must be unique'
+        // ]
 
     );
     

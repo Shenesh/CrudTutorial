@@ -10,7 +10,7 @@
      
         <td>{{ $image->id }}</td>
       
-        <td><img src="{{ asset("storage/images/$image->image") }}"  height="30px" width="30px"/></td>
+        <td><img src="{{ asset("storage/images/$image->image") }}"  height="60px" width="60px"/></td>
       
         <td>
             <form action="{{ route('picturestore.destroy',$image->id) }}" method="POST">
