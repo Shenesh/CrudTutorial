@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\PictureStore;
+use App\Ajax;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
-class PictureStoreController extends Controller
+class AjaxController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class PictureStoreController extends Controller
      */
     public function index()
     {
-        $images = PictureStore::all();
-       
-        return view('picturestore.index',compact('images'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class PictureStoreController extends Controller
      */
     public function create()
     {
-        return view('pictureStore.create');
+        return view('ajax.create');
     }
 
     /**
@@ -39,21 +35,17 @@ class PictureStoreController extends Controller
      */
     public function store(Request $request)
     {
-      $fileName = $request->image->getClientOriginalName();
-      $request->image->storeAs('images',$fileName,'public');
-      $picture = new PictureStore();
-      $picture->image = $fileName;
-      $picture->save();
-      return('Done!');
+        return($request->fname);
+        return response()->json(['success'=>'Data recived successfully.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\Ajax  $ajax
      * @return \Illuminate\Http\Response
      */
-    public function show(PictureStore $pictureStore)
+    public function show(Ajax $ajax)
     {
         //
     }
@@ -61,10 +53,10 @@ class PictureStoreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\Ajax  $ajax
      * @return \Illuminate\Http\Response
      */
-    public function edit(PictureStore $pictureStore)
+    public function edit(Ajax $ajax)
     {
         //
     }
@@ -73,10 +65,10 @@ class PictureStoreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\Ajax  $ajax
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PictureStore $pictureStore)
+    public function update(Request $request, Ajax $ajax)
     {
         //
     }
@@ -84,11 +76,12 @@ class PictureStoreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\Ajax  $ajax
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PictureStore $pictureStore)
+    public function destroy(Ajax $ajax)
     {
         //
     }
+    
 }
