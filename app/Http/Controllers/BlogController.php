@@ -29,6 +29,7 @@ class BlogController extends Controller
     public function create()
     {
         return view('blogs.create');
+
     }
 
     /**
@@ -39,31 +40,32 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'title' => 'required',
-            'description' => 'required|unique:blogs,description',
-
-        ]
-        // ,
-        // [
-        //     'title.required' => 'Title is required',
-        //     'description.required' => 'Description is required',
-        //     'description.unique' => 'Description must be unique'
-        // ]
-
-    );
-    
-    if ($validator->fails()) {
-        return redirect('blogs/create')
-                    ->withErrors($validator)
-                    ->withInput();
-    }
-  
         Blog::create($request->all());
+    //     $validator = Validator::make($request->all(),
+    //     [
+    //         'title' => 'required',
+    //         'description' => 'required|unique:blogs,description',
+
+    //     ]
+    //     // ,
+    //     // [
+    //     //     'title.required' => 'Title is required',
+    //     //     'description.required' => 'Description is required',
+    //     //     'description.unique' => 'Description must be unique'
+    //     // ]
+
+    // );
+    
+    // if ($validator->fails()) {
+    //     return redirect('blogs/create')
+    //                 ->withErrors($validator)
+    //                 ->withInput();
+    // }
+  
+    //     Blog::create($request->all());
    
-        return redirect()->route('blogs.index')
-                        ->with('success','Blog created successfully.');
+    //     return redirect()->route('blogs.index')
+    //                     ->with('success','Blog created successfully.');
     }
 
     /**

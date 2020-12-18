@@ -39,12 +39,15 @@ class PictureStoreController extends Controller
      */
     public function store(Request $request)
     {
-      $fileName = $request->image->getClientOriginalName();
-      $request->image->storeAs('images',$fileName,'public');
-      $picture = new PictureStore();
-      $picture->image = $fileName;
-      $picture->save();
-      return('Done!');
+       
+        
+        $fileName = $request->image->getClientOriginalName();
+        $request->image->storeAs('images',$fileName,'public');
+        $picture = new PictureStore();
+        $picture->image = $fileName;
+        $picture->save();
+        return('Done!');
+
     }
 
     /**

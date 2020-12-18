@@ -82,7 +82,5 @@ class jenyController extends Controller
     {
         //
     }
-    public function jenya(){
-        //
-    }
+  
 }

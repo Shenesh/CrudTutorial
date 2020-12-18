@@ -26,4 +26,4 @@ Route::resource('picturestore','PictureStoreController');
 Route::resource('notify','NotifyController');
 Route::resource('ajax','AjaxController');
 
-//Route::resource('customer','CustomerController');
+Route::resource('customer','CustomerController');

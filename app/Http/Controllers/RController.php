@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Ajax;
 use Illuminate\Http\Request;
 
-class AjaxController extends Controller
+class RController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +23,7 @@ class AjaxController extends Controller
      */
     public function create()
     {
-        return view('ajax.create');
+        //
     }
 
     /**
@@ -35,17 +34,16 @@ class AjaxController extends Controller
      */
     public function store(Request $request)
     {
-        // return($request->fname);
-        return response()->json(['success'=>'Data recived successfully.']);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Ajax $ajax)
+    public function show($id)
     {
         //
     }
@@ -53,10 +51,10 @@ class AjaxController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ajax $ajax)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +63,10 @@ class AjaxController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ajax  $ajax
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ajax $ajax)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,12 +74,11 @@ class AjaxController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ajax $ajax)
+    public function destroy($id)
     {
         //
     }
-    
 }
