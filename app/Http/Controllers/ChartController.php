@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\TestModel;
 use Illuminate\Http\Request;
-use DB;
+use App\Income;
+use App\Charts\SimpleChart;
 
-class TestModelController extends Controller
+class ChartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,15 @@ class TestModelController extends Controller
      */
     public function index()
     {
-        $test = DB::table('income')->select('month as month_name')->get();
-
-
-
-        return view('test.index',compact('test'));
+       $data = Income::pluck('amount','month');
+    //    return $data->keys();
+    //    return $data->values();
+       $chart = new SimpleChart;
+    //    $chart->labels(['One', 'Two', 'Three', 'Four']);
+    //    $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);        
+       $chart->labels($data->keys());
+       $chart->dataset('Monthly Income','line',$data->values());
+       return view ('chart.index',compact('chart','data'));
     }
 
     /**
@@ -46,10 +50,10 @@ class TestModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TestModel  $testModel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TestModel $testModel)
+    public function show($id)
     {
         //
     }
@@ -57,10 +61,10 @@ class TestModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TestModel  $testModel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(TestModel $testModel)
+    public function edit($id)
     {
         //
     }
@@ -69,10 +73,10 @@ class TestModelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TestModel  $testModel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TestModel $testModel)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +84,10 @@ class TestModelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TestModel  $testModel
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TestModel $testModel)
+    public function destroy($id)
     {
         //
     }

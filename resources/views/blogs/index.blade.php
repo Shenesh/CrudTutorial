@@ -1,6 +1,7 @@
 @extends('layout.layout')
  
 @section('content')
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -18,6 +19,8 @@
         </div>
     @endif
    
+  
+
     <table class="table table-bordered">
         <tr>
             <th></th>
@@ -25,22 +28,25 @@
             <th>Description</th>
             <th width="250px">Action</th>
         </tr>
-        @foreach ($blogs as $blog)
+        @foreach ($abc as $blog)
         <tr>
             <td>❤</td>
             <td>{{ $blog->title }}</td>
             <td>{{ $blog->description }}</td>
             <td>
-                <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
-   
+              
                     <a class="btn btn-info" href="{{ route('blogs.show',$blog->id) }}">Show</a>
-    
+
+                    
                     <a class="btn btn-primary" href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
+                    
+                    <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
    
                     @csrf
                     @method('DELETE')
       
                     <button type="submit" class="btn btn-danger">Delete</button>
+                  
                 </form>
             </td>
         </tr>

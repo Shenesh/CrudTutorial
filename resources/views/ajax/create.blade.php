@@ -64,14 +64,14 @@
         dataType: 'JSON',
         data: $.param(params),
         success: function (response) {
-//         Swal.fire({
-//         title: 'Store function activated',
-//         text: response.success,
-//         icon: 'success',
-//         confirmButtonText: 'Cool'
-// });
-toastr.options.closeButton = true;  
-toastr.error(response.success)
+        Swal.fire({
+        title: response.heading,
+        text: response.success,
+        icon: 'success',
+        confirmButtonText: 'Cool'
+        });
+// toastr.options.closeButton = true;  
+// toastr.success(response.success)
     
         }
 

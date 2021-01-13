@@ -36,7 +36,7 @@ class AjaxController extends Controller
     public function store(Request $request)
     {
         // return($request->fname);
-        return response()->json(['success'=>'Data recived successfully.']);
+        return response()->json(['success'=>'Data recived successfully.','heading'=>'This is test heading']);
     }
 
     /**

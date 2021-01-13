@@ -12,7 +12,7 @@
         </div>
     </div>
    
-    @if ($errors->any())
+    {{-- @if ($errors->any())
         <div class="alert alert-danger">
             <strong>Warning!</strong> Please check input field code<br><br>
             <ul>
@@ -21,7 +21,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif --}}
   
     <form action="{{ route('blogs.update',$blog->id) }}" method="POST">
         @csrf

@@ -25,5 +25,5 @@ Route::resource('test','TestModelController');
 Route::resource('picturestore','PictureStoreController');
 Route::resource('notify','NotifyController');
 Route::resource('ajax','AjaxController');
-
+Route::resource('chart','ChartController');
 Route::resource('customer','CustomerController');

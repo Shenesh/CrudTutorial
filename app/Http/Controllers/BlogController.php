@@ -16,9 +16,11 @@ class BlogController extends Controller
     public function index()
     {
      
-        $blogs = Blog::all();
-       // return $blogs;
-        return view('blogs.index',compact('blogs'));
+        $abc = Blog::all();
+        // return $blogs;
+       // return('index');
+      // return view('folder_name.page_name');
+       return view('blogs.index',compact('abc'));
     }
 
     /**
@@ -35,37 +37,39 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  
+     * 
+     * \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Blog::create($request->all());
-    //     $validator = Validator::make($request->all(),
-    //     [
-    //         'title' => 'required',
-    //         'description' => 'required|unique:blogs,description',
+       
+        $validator = Validator::make($request->all(),
+        [
+            'title' => 'required',
+            'description' => 'required|unique:blogs,description',
 
-    //     ]
-    //     // ,
-    //     // [
-    //     //     'title.required' => 'Title is required',
-    //     //     'description.required' => 'Description is required',
-    //     //     'description.unique' => 'Description must be unique'
-    //     // ]
+        ]
+        // ,
+        // [
+        //     'title.required' => 'Title is required',
+        //     'description.required' => 'Description is required',
+        //     'description.unique' => 'Description must be unique'
+        // ]
 
-    // );
+    );
     
-    // if ($validator->fails()) {
-    //     return redirect('blogs/create')
-    //                 ->withErrors($validator)
-    //                 ->withInput();
-    // }
+    if ($validator->fails()) {
+        return redirect('blogs/create')
+                    ->withErrors($validator)
+                    ->withInput();
+    }
   
-    //     Blog::create($request->all());
+        Blog::create($request->all());
    
-    //     return redirect()->route('blogs.index')
-    //                     ->with('success','Blog created successfully.');
+        return redirect()->route('blogs.index')
+                        ->with('success','Blog created successfully.');
     }
 
     /**
@@ -76,6 +80,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
+        // dd($blog);
         return view('blogs.show',compact('blog'));
     }
 
@@ -99,22 +104,22 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $validator = \Validator::make($request->all(),
-            [
-                'title' => 'required',
-                'discription' => 'required|min:5',
+        // $validator = \Validator::make($request->all(),
+        //     [
+        //         'title' => 'required',
+        //         'discription' => 'required|min:5',
               
-            ], 
-            [
-                'title.required' => 'Name is required',
-                'discription.required' => 'Password is required'
-            ]
-          );
+        //     ], 
+        //     [
+        //         'title.required' => 'Name is required',
+        //         'discription.required' => 'Password is required'
+        //     ]
+        //   );
   
         $blog->update($request->all());
   
-        return redirect()->route('blogs.index')
-                        ->with('success','Blog updated successfully');
+        // return redirect()->route('blogs.index')
+        //                 ->with('success','Blog updated successfully');
     }
 
     /**
@@ -128,7 +133,9 @@ class BlogController extends Controller
        // return($blog);
         $blog->delete();
   
-        return redirect()->route('blogs.index')
-                        ->with('success','Blog deleted successfully');
+        return redirect()->route('blogs.index');
+        //                 ->with('success','Blog deleted successfully');
     }
+
+ 
 }
