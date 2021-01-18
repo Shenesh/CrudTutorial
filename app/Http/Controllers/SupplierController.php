@@ -43,6 +43,8 @@ class SupplierController extends Controller
             'phone'=>'required',
             'email'=>'required|email',
             ));
+            
+            //you have to code a way to store 
     }
 
     /**
