@@ -64,12 +64,23 @@
         dataType: 'JSON',
         data: $.param(params),
         success: function (response) {
+        if(response.failed){
+                Swal.fire({
+        title: response.heading,
+        text: response.success,
+        icon: 'warning',
+        confirmButtonText: 'Cool'
+        });
+        }
+        else{
         Swal.fire({
         title: response.heading,
         text: response.success,
         icon: 'success',
         confirmButtonText: 'Cool'
         });
+            }
+   
 // toastr.options.closeButton = true;  
 // toastr.success(response.success)
     

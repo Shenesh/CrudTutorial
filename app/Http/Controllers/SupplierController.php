@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Ajax;
+use App\Supplier;
 use Illuminate\Http\Request;
 
-class AjaxController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class AjaxController extends Controller
      */
     public function create()
     {
-        return view('ajax.create');
+        return view ('supplier.create');
     }
 
     /**
@@ -35,24 +35,23 @@ class AjaxController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
-        // return($request->fname);
-        if ($validator->fails()) {
-        return response()->json(['failed'=>'Data recived successfully.','heading'=>'This is test heading']);
-        }
-        return response()->json(['success'=>'Data recived successfully.','heading'=>'This is test heading']);
+        $this->validate($request,array(
+            'fname'=>'required',
+            'lname'=>'required',
+            'addLine1'=>'required',
+            'addLine2'=>'required',
+            'phone'=>'required',
+            'email'=>'required|email',
+            ));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show(Ajax $ajax)
+    public function show(Supplier $supplier)
     {
         //
     }
@@ -60,10 +59,10 @@ class AjaxController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ajax $ajax)
+    public function edit(Supplier $supplier)
     {
         //
     }
@@ -72,10 +71,10 @@ class AjaxController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ajax  $ajax
+     * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ajax $ajax)
+    public function update(Request $request, Supplier $supplier)
     {
         //
     }
@@ -83,12 +82,11 @@ class AjaxController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ajax  $ajax
+     * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ajax $ajax)
+    public function destroy(Supplier $supplier)
     {
         //
     }
-    
 }

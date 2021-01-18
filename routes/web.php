@@ -12,6 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/viewpdffile', function () {
+    return view('pdfviews.testpdf');
+});
+
+Route::get('/viewpdf', function(){
+$pdf = PDF::loadView('pdfviews.testpdf');
+return $pdf->stream('test.pdf');
+});
+
+Route::get('/pdf', function(){
+    $html ='<h1>Hello PDF</h1>';
+    $pdf = PDF:: loadHtml($html); 
+    return $pdf->stream('test.pdf');
+    });
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,4 +40,5 @@ Route::resource('picturestore','PictureStoreController');
 Route::resource('notify','NotifyController');
 Route::resource('ajax','AjaxController');
 Route::resource('chart','ChartController');
+Route::resource('supplier','SupplierController');
 Route::resource('customer','CustomerController');

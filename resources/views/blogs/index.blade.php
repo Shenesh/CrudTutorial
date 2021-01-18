@@ -35,12 +35,11 @@
             <td>{{ $blog->description }}</td>
             <td>
               
-                    <a class="btn btn-info" href="{{ route('blogs.show',$blog->id) }}">Show</a>
-
-                    
-                    <a class="btn btn-primary" href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
+               
                     
                     <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('blogs.show',$blog->id) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
