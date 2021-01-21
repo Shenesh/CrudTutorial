@@ -26,7 +26,7 @@
                     @endif
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="">Last name</label>
+                    <label for=""> Last name</label>
                     <input type="text" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }} "  value="{{old('lname')}}" name="lname">
                     @if ($errors->has('lname'))
                     <div class="validate">

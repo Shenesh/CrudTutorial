@@ -37,7 +37,11 @@ return [
         'enabled' => true,
         'binary'  => env('WKHTML_PDF_BINARY', '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"'),
         'timeout' => false,
-        'options' => [],
+        'options' => [
+            'header-left'=>'Page [page]',
+            'header-right'=>'[date]',
+            'footer-right'=>'Chathura Dissanayaka - BIT Project Class',
+        ],
         'env'     => [],
     ],
     
