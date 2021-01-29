@@ -41,7 +41,7 @@ class SupplierController extends Controller
             'addLine1'=>'required',
             'addLine2'=>'required',
             'phone'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|',
             ));
             
             //you have to code a way to store 

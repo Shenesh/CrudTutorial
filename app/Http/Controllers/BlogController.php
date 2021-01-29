@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\BlogsExport;
+use Excel;
 
 class BlogController extends Controller
 {
@@ -48,7 +50,7 @@ class BlogController extends Controller
        
         $validator = Validator::make($request->all(),
         [
-            'title' => 'required',
+            'title' =>'required',
             'description' => 'required|unique:blogs,description',
 
         ]
@@ -81,7 +83,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        // dd($blog);
+        //dd($blog);
         return view('blogs.show',compact('blog'));
     }
 
@@ -138,5 +140,10 @@ class BlogController extends Controller
         //                 ->with('success','Blog deleted successfully');
     }
 
+    public function export(){
+        return Excel::download(new BlogsExport, 'blogs.xlsx');
+    }
+
+ 
  
 }

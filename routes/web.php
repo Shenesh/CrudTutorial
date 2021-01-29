@@ -60,11 +60,16 @@ Route::get('/pdfwithdata', function(){
 Route::get('/pdf', function(){
     $html ='<h1>Hello PDF</h1>';
     $pdf = PDF:: loadHtml($html); 
-    return $pdf->stream('test.pdf');
+    $date ="2021/01/20";
+    return $pdf->stream('test-'.$date.'');
     });
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/welcome2', function () {
+    return view('welcome2');
 });
 
 Route::resource('blogs','BlogController');
@@ -83,3 +88,6 @@ Route::resource('customer','CustomerController');
 Route::get('report1', 'ReportController@report1')->name('report.report1');
 Route::get('report2', 'ReportController@report2')->name('report.report2');
 Route::get('report3', 'ReportController@report3')->name('report.report3');
+
+Route::get('blog/export/','BlogController@export')->name('blog.export');
+Route::get('export/income/','ExportController@exportIncome')->name('export.income');

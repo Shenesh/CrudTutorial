@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         
 
         /*
@@ -231,6 +232,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        
+        
+        
 
     ],
 
