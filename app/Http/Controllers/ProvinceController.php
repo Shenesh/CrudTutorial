@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Province;
 use Illuminate\Http\Request;
-use App\Income;
-use App\Charts\SimpleChart;
 
-class ChartController extends Controller
+class ProvinceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,7 @@ class ChartController extends Controller
      */
     public function index()
     {
-       $data = Income::pluck('amount','month');
-    //    return $data->keys();
-    //    return $data->values();
-       $chart = new Si;mpleChart;
-    //    $chart->labels(['One', 'Two', 'Three', 'Four']);
-    //    $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);        
-       $chart->labels($data->keys());
-       $chart->dataset('Monthly Income','line',$data->values());
-       return view ('chart.index',compact('chart','data'));
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class ChartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Province $province)
     {
         //
     }
@@ -61,10 +52,10 @@ class ChartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Province $province)
     {
         //
     }
@@ -73,10 +64,10 @@ class ChartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Province $province)
     {
         //
     }
@@ -84,10 +75,10 @@ class ChartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Province $province)
     {
         //
     }

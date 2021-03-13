@@ -68,6 +68,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/welcome2', function () {
     return view('welcome2');
 });
@@ -91,3 +93,14 @@ Route::get('report3', 'ReportController@report3')->name('report.report3');
 
 Route::get('blog/export/','BlogController@export')->name('blog.export');
 Route::get('export/income/','ExportController@exportIncome')->name('export.income');
+Route::get('blog/import/','BlogController@import')->name('blog.import');
+
+Route::get('blogsimport','BlogController@showimportpage');
+Route::post('blogs/import','BlogController@import')->name('blogs.import');
+
+Route::resource('department', 'DepartmentController');
+Route::POST('get_employee/{department}','EmployeeController@get_employee')->name('employee.get_employee');
+
+
+Route::resource('porder', 'PurchaseOrderController');
+Route::post('/porder_getdata/{product}','PurchaseOrderController@add_data')->name('porder.add_data');

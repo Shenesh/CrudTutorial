@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Excel;
 use App\Blog;
+use App\Imports\BlogImport;
+use App\Exports\BlogsExport;
+use App\Imports\BlogsImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Exports\BlogsExport;
-use Excel;
 
 class BlogController extends Controller
 {
@@ -46,7 +48,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        // return($request);
+      //  dd($request);
        
         $validator = Validator::make($request->all(),
         [
@@ -143,7 +145,23 @@ class BlogController extends Controller
     public function export(){
         return Excel::download(new BlogsExport, 'blogs.xlsx');
     }
+ 
 
+    //Display upload page for data import 
+    public function showimportpage(){
+        return view('blogs.import');
+    }
+
+    //Upload data to database 
+    public function import(Request $request){
+        $file = $request->file('file')->store('import');
+        $import = new BlogsImport;
+        $import -> import($file);
+        if($import->failures()->isNotEmpty()){
+            return back()->withFailures($import->failures());
+        }
+        return redirect()->route('blogs.index')->with('success','Excel file imported successfully.');
+    }
  
  
 }
