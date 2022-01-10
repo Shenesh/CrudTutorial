@@ -2,14 +2,34 @@
     @section('content')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.23/r-2.2.7/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.23/r-2.2.7/datatables.min.js"></script>
-    <div class="form-row">
+   
+    <div class="row">
         <div class="form-group col-5">
+            <input type="text" class="form-control" name="" id="po_number" placeholder="po_number">
+        </div>
+        <div class="form-group col-5">
+            <input type="date" class="form-control" name="" id="due_date">
+        </div>
+    </div>
+    
+    
+    
+    <div class="form-row">
+       
+
+        <div class="form-group col-5">
+
+          
+
+
+
             <select name="product" id="product" class="form-control">
                 <option value="">Select product</option>
                 <option value="Product 1">Product 1</option> 
                 <option value="Product 2">Product 2</option>
                 <option value="Product 3">Product 3</option>
                 <option value="Product 4">Product 4</option>
+                
             </select>
         </div>
         <div class="form-group col-5">
@@ -32,6 +52,7 @@
         <tbody>
         </tbody>
     </table>
+    <button id="save" class="btn btn-primary">Save to database</button>
 </div>
 <script>
     $(document).ready(function() {
@@ -80,6 +101,25 @@
             .remove()
             .draw();
         });
+        $('#save').click(function(){
+            var params ={
+                po_number: $('#po_number').val(),
+                due_date: $('#due_date').val(),
+                table_data:table.data().toArray(),
+                _token: "{{ csrf_token() }}",
+            }
+            $.ajax({
+                url:BASE+'porder',
+                type: 'POST',
+                dataType: 'JSON',
+                data: $.param(params),
+                success:function(response){
+                    console.log('data added to database');
+                }
+            })
+        });
+
     } );
 </script>
+
 @endsection

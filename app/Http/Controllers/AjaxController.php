@@ -36,13 +36,11 @@ class AjaxController extends Controller
     public function store(Request $request)
     {
 
+        Ajax::create($request->all());
 
 
-
-        // return($request->fname);
-        if ($validator->fails()) {
-        return response()->json(['failed'=>'Data recived successfully.','heading'=>'This is test heading']);
-        }
+       
+       
         return response()->json(['success'=>'Data recived successfully.','heading'=>'This is test heading']);
     }
 

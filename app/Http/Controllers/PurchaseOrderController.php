@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\PorderItems;
 use App\PurchaseOrder;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,22 @@ class PurchaseOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $purchaseOrder = new PurchaseOrder();
+        $purchaseOrder->po_number = $request->po_number;
+        $purchaseOrder->due_date = $request->due_date;
+        $purchaseOrder->save();
+        
+
+
+        $tabledata = $request->get('table_data');
+        foreach ($tabledata as $pdata) {
+            $orderItems = new PorderItems();
+            $orderItems->po_number = $purchaseOrder->po_number;
+            $orderItems->product_name = $pdata['product'];
+            $orderItems->quantity = $pdata['quantity'];
+            $orderItems->save();
+        }
     }
 
     /**
@@ -86,4 +102,6 @@ class PurchaseOrderController extends Controller
                
         return response()->json(['product'=>$product]);
     }
+
+
 }

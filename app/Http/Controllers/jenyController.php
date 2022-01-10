@@ -35,7 +35,7 @@ class jenyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

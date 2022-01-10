@@ -21,6 +21,7 @@ class BlogController extends Controller
     {
      
         $abc = Blog::all();
+     
         // return $blogs;
        // return('index');
       // return view('folder_name.page_name');
@@ -56,12 +57,12 @@ class BlogController extends Controller
             'description' => 'required|unique:blogs,description',
 
         ]
-        // ,
-        // [
-        //     'title.required' => 'Title is required',
-        //     'description.required' => 'Description is required',
-        //     'description.unique' => 'Description must be unique'
-        // ]
+        ,
+        [
+            'title.required' => 'Title is required',
+            'description.required' => 'Description is required',
+            'description.unique' => 'Description must be unique'
+        ]
 
     );
     
@@ -72,6 +73,8 @@ class BlogController extends Controller
     }
   
         Blog::create($request->all());
+
+       
    
         return redirect()->route('blogs.index')
                         ->with('success','Blog created successfully.');
@@ -123,8 +126,8 @@ class BlogController extends Controller
   
         $blog->update($request->all());
   
-        // return redirect()->route('blogs.index')
-        //                 ->with('success','Blog updated successfully');
+        return redirect()->route('blogs.index')
+                        ->with('success','Blog updated successfully');
     }
 
     /**

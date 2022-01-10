@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\PictureStore;
+use App\PorderItems;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
-class PictureStoreController extends Controller
+class PorderItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class PictureStoreController extends Controller
      */
     public function index()
     {
-        $images = PictureStore::all();
-       
-        return view('picturestore.index',compact('images'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class PictureStoreController extends Controller
      */
     public function create()
     {
-        return view('pictureStore.create');
+        //
     }
 
     /**
@@ -39,37 +35,27 @@ class PictureStoreController extends Controller
      */
     public function store(Request $request)
     {
-       
-        
-        $fileName = $request->image->getClientOriginalName();
-        $request->image->storeAs('images',$fileName,'public');
-        $picture = new PictureStore();
-        $picture->image = $fileName;
-        $picture->save();
-        return('Done!');
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\PorderItems  $porderItems
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PorderItems $porderItems)
     {
-        $image = PictureStore::find($id);
-        return view('picturestore.show',compact('image'));
+        //
     }
-  
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\PorderItems  $porderItems
      * @return \Illuminate\Http\Response
      */
-    public function edit(PictureStore $pictureStore)
+    public function edit(PorderItems $porderItems)
     {
         //
     }
@@ -78,10 +64,10 @@ class PictureStoreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\PorderItems  $porderItems
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PictureStore $pictureStore)
+    public function update(Request $request, PorderItems $porderItems)
     {
         //
     }
@@ -89,10 +75,10 @@ class PictureStoreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PictureStore  $pictureStore
+     * @param  \App\PorderItems  $porderItems
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PictureStore $pictureStore)
+    public function destroy(PorderItems $porderItems)
     {
         //
     }

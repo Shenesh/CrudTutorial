@@ -18,8 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->double('unit_price');
             $table->string('description');
+            $table->string('image')->nullable();
+            $table->integer('category_id')->nullable();
             $table->date('exp_date');
-            
             $table->timestamps();
         });
     }

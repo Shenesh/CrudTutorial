@@ -41,9 +41,9 @@ Route::get('/pdfwithdata', function(){
         ]
     ];
     $pdf = PDF::loadView('pdfviews.pdfwithdata',compact('data'));
-   // $pdf->setOrientation('landscape');
-   // $pdf->setOption('header-right','Page [page]');
- //  $pdf->setOption('header-right','[date]');
+    $pdf->setOrientation('landscape');
+    $pdf->setOption('header-right','Page [page]');
+    $pdf->setOption('header-right','[date]');
  //$pdf->setOptions([
     // 'header-left'=>'Page [page]',
     // 'header-right'=>'[date]',
@@ -104,3 +104,28 @@ Route::POST('get_employee/{department}','EmployeeController@get_employee')->name
 
 Route::resource('porder', 'PurchaseOrderController');
 Route::post('/porder_getdata/{product}','PurchaseOrderController@add_data')->name('porder.add_data');
+
+
+Route::get('/show_search_page','ProductController@show_search_page');
+Route::post('/search_example_two','ProductController@search_example_two')->name('product.search_example_two');
+
+Route::resource('product', 'ProductController');
+route::any('search_example','ProductController@search_example')->name('product.search_example');
+
+Route::get('search2','search2Controller@index')->name('search2');
+Route::get('select2-autocomplete','search2Controller@autocomplete');
+
+Route::get('autocomplete','search2Controller@index_2');
+Route::POST('fetchdata','search2Controller@fetchdata')->name('search.fetchdata');
+
+Route::get('tabs','TabController@index');
+
+Route::get('tab1','TabController@tab1');
+Route::get('tab2','TabController@tab2');
+Route::get('tab3','TabController@tab3');
+
+Route::get('popup','PopupController@index');
+
+
+
+

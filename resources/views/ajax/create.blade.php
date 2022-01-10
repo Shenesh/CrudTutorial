@@ -36,7 +36,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Last Name:</strong>
-                <input type="text" name="lname" class="form-control" placeholder="Lirst name" value="{{ old('lname') }}">
+                <input type="text" name="lname" class="form-control"  id="lname" placeholder="Last name" value="{{ old('lname') }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -48,6 +48,7 @@
 
 <script>
     var BASE = "{{url('/')}}/";
+    
     $('form').on('submit', function(e){
     e.preventDefault();
     // alert('default prevented');
@@ -55,6 +56,7 @@
  
     var params ={
         fname:$('#fname').val(),
+        lname:$('#lname').val(),
         _token:$('[name="_token"]').val(),
        
     };
@@ -76,9 +78,11 @@
         Swal.fire({
         title: response.heading,
         text: response.success,
-        icon: 'success',
+        icon: 'info',
         confirmButtonText: 'Cool'
         });
+        $('#fname').val('');
+        $('#lname').val('');
             }
    
 // toastr.options.closeButton = true;  

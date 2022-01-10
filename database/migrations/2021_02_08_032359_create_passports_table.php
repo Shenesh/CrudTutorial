@@ -17,7 +17,7 @@ class CreatePassportsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('passport_number')->unique();
-            $table->date('exp_date');
+            $table->string('exp_date');
             $table->string('country');
             $table->timestamps();
         });
