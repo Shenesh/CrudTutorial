@@ -126,6 +126,8 @@ Route::get('tab3','TabController@tab3');
 
 Route::get('popup','PopupController@index');
 
+
+// If yiu want to know how to display radio buttons based on the checkbox click you can use following code (please go to the view page and check the radio buttons)
 Route::get('/checkbox', function () {
     return view('checkbox');
 });
