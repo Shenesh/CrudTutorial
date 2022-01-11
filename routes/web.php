@@ -126,6 +126,10 @@ Route::get('tab3','TabController@tab3');
 
 Route::get('popup','PopupController@index');
 
+Route::get('/checkbox', function () {
+    return view('checkbox');
+});
+
 
 
 
