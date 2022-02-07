@@ -23,7 +23,6 @@
             <br>
            Sha la la la la.........
         </div>
-     
         <script>
             $(function () {
                 $("#click_on_me").click(function () {

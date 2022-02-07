@@ -133,5 +133,14 @@ Route::get('/checkbox', function () {
 });
 
 
+//order 
+Route::resource('order', 'OrderController');
+Route::get('/order_getdata/{product}','OrderController@add_data')->name('order.add_data');
+
+
+
+// Route::post('ajax{}','CustomerController@ajax')->name('ajax');
+
+
 
 

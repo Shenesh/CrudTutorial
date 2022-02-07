@@ -2,6 +2,7 @@
   
 @section('content')
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -66,27 +67,9 @@
         dataType: 'JSON',
         data: $.param(params),
         success: function (response) {
-        if(response.failed){
-                Swal.fire({
-        title: response.heading,
-        text: response.success,
-        icon: 'warning',
-        confirmButtonText: 'Cool'
-        });
-        }
-        else{
-        Swal.fire({
-        title: response.heading,
-        text: response.success,
-        icon: 'info',
-        confirmButtonText: 'Cool'
-        });
-        $('#fname').val('');
-        $('#lname').val('');
-            }
-   
-// toastr.options.closeButton = true;  
-// toastr.success(response.success)
+       
+            Swal.fire('Any fool can use a computer')
+            
     
         }
 
